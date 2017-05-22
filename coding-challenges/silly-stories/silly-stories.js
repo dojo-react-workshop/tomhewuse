@@ -1,40 +1,59 @@
-var customName = document.getElementById('customname');
-var randomize = document.querySelector('.randomize');
-var story = document.querySelector('.story');
-var x = ['Willy the Goblin', 'Big Daddy', 'Father Christmas'];
-var y = ['the soup kitchen', 'Disneyland', 'the White House'];
-var z = ['spontaneously combusted', 'melted into a puddle on the sidewalk', 'turned into a slug and crawled away'];
+'use strict';
 
+(function() {
+    const customName = document.getElementById('customname')
+    const randomize = document.querySelector('.randomize');
+    const story = document.querySelector('.story');
+    const characters = ['Willy the Goblin', 'Big Daddy', 'Father Christmas'];
+    const locations = ['Jamaica', 'Saudi Arabia', 'Israel', 'Vatican', 'Sicily'];
+    const weirdEvents = ['spontaneously combusted', 'melted into a puddle on the sidewalk', 'turned into a slug and crawled away'];
 
-function randomValueFromArray(array){
-    return array[Math.floor(Math.random()*array.length)];
-}
+    randomize.addEventListener('click', handleButtonClick);
 
-randomize.addEventListener('click', result);
+    function handleButtonClick() {
+        let nameValue = customName.value;
+        if (nameValue === '') {
+            nameValue = 'Bob';
+        }
+        let storyText = buildStory(nameValue);
 
-function result() {
-
-    if(customName.value != '') {
-        var name = customName.value;
-
+        story.textContent = storyText;
+        story.style.visibility = 'visible';
     }
 
-    if(document.getElementById("uk").checked) {
-        var weight = Math.round(300);
-        var temperature =  Math.round(94);
-        var tempText = "celsius";
-    } else{
-        weight = 300;
-        temperature=94;
-        tempText = "fanrenheit"
+    function grabRandomArrayItem(array) {
+        return array[Math.floor(Math.random() * array.length)];
     }
-    var who = randomValueFromArray(x);
-    var where = randomValueFromArray(y);
-    var event = randomValueFromArray(z);
 
-    var story = `It was ${temperature} ${tempText} outside, so ${who} went for a walk. 
-                When they got to ${where}, they stared in horror for a few moments, then ${event}. 
-                Bob saw the whole thing, but he was not surprised — ${who} weighs 300 pounds, and it was a hot day.`
-    story.textContent = story;
-    story.style.visibility = 'visible';
+    function getMeasurements() {
+        var measurements = {};
+        measurements.weight = 300;
+        measurements.temp = Math.floor(Math.random() * 94);
+        measurements.tempText = "farenheit";
+        measurements.weightText = "pounds";
+
+        if (document.getElementById("uk").checked) {
+            measurements.weight = Math.round(measurements.weight / 2);
+            measurements.weightText = "kgs";
+            measurements.temp = ((measurements.temp - 32) * (5 / 9));
+            measurements.tempText = "centigrade"
+        }
+        return measurements;
+    }
+
+    function buildStory(customName = "Bob") {
+        var character = grabRandomArrayItem(characters);
+        var location = grabRandomArrayItem(locations);
+        var weirdEvent = grabRandomArrayItem(weirdEvents);
+        var measurements = getMeasurements();
+        return `It was ${measurements.temp} ${measurements.tempText} outside, so ${character} went for a walk. 
+                            When they got to ${location}, they stared in horror for a few moments, then ${weirdEvent}. 
+                            ${customName} saw the whole thing, but he was not surprised — ${character} weighs ${measurements.weight} ${measurements.weightText}, 
+                            and it was a hot day.`;
+    };
+})();
+
+const state = {
+    customName,
+    isUk
 }
