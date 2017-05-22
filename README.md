@@ -1,3 +1,3 @@
 ## Coding Challenges
-* [filter](./filter.js)
-* [map](./
+* [filter](./coding-challenges/filter.js)
+* [map](./coding-challenges/map.js)
