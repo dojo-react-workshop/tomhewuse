@@ -24,6 +24,7 @@ function Vehicle(name, numOfWheels, numOfPassengers, speed){
 Vehicle.prototype.makeNoise=function(){console.log("noise");};
 Vehicle.prototype.checkMiles=function(){console.log(`Distance Traveled: ${this.distance_traveled}`);};
 Vehicle.prototype.setVIN = function(){return Math.floor(Math.random()*1000000000)};
+Vehicle.prototype.accelerate = function(val=1){this.speed+=val};
 
 var bike = new Vehicle('bicycle', 2, 1, 13);
 bike.makeNoise=function(){
@@ -44,6 +45,7 @@ console.log(bike.VIN)
 console.log(bike);
 console.log(sedan);
 bus.pickupPassengers(8);
+bus.accelerate();
 console.log(bus);
 bike.move();
 bike.move();

@@ -83,36 +83,107 @@ class Deck {
 //Player should be able to take card(deck deal method)
 //Player should be able to discard
 class Player{
-    constructor(name){
+    constructor(name,type='player'){
         this.name = name;
+        this.type=type;
         this.hand = [];
+        this.handValue=null;
     }
 
-    takeCard (cardDealt) {
+    takeCard(cardDealt) {
         this.hand.push(cardDealt);
+        this.updateHandValue();
+        return cardDealt;
     }
 
     discardCard(card){
         var self = this;
         this.hand.forEach(function(value, index, arr){
-            if(card.name=value.name){
-                if(card.suit=value.suit){
-                    return self.hand.splice(index,1);
+            if(card.name===value.name){
+                if(card.suit===value.suit){
+                    return self.hand.splice(index,1)
                 }
             }
         });
+        this.updateHandValue();
+    }
+
+    updateHandValue(){
+        let sum =0;
+        for(let i=0; i<this.hand.length; i++){
+            sum+=this.hand[i].value;
+        }
+        this.handValue=sum;
+
     }
 }
 
-var newDeck = new Deck();
-console.log(newDeck);
-newDeck.shuffleDeck();
-newDeck.shuffleDeck();
-console.log(newDeck);
+class Game{
+    constructor(playerName, dealerName="No Good Cheating Dealer"){
+        this.deck = new Deck();
+        this.player = new Player(playerName);
+        this.dealer = new Player(dealerName, 'dealer');
+    }
 
-var newPlayer = new Player("Tom");
-newPlayer.takeCard(newDeck.dealCard());
-newPlayer.takeCard(newDeck.dealCard());
-console.log(newPlayer.hand);
-console.log(newDeck.cards.length);
-newPlayer.discardCard({suit: 'c', name: 'King', value: 10, img: 'ck.png' });
+    initialize(){
+        this.deck.shuffleDeck();
+        this.dealHands();
+        this.attachHandlers();
+        this.checkWinner();
+    }
+
+    dealHands(){
+        for(let i=0;i<2;i++) {
+            this.player.takeCard(this.deck.dealCard());
+            $('#playerHand').append(this.createCardHTML(this.player.hand[i]));
+            this.dealer.takeCard(this.deck.dealCard());
+            $('#dealerHand').append(this.createCardHTML(this.dealer.hand[i]));
+        }
+
+    }
+
+    createCardHTML(card){
+        return `<div class='card' value='${card.value}' suit='${card.suit}' name='${card.name}'><img src="./img/${card.img}"></div>`
+    }
+
+    checkWinner(){
+        console.log("Dealer: "+ this.dealer.handValue);
+        console.log("Player: "+ this.player.handValue);
+        if(this.dealer.handValue > this.player.handValue){
+            console.log('Dealer wins!');
+        } else if(this.dealer.handValue === this.player.handValue){
+            console.log('Tie');
+        }else {
+            console.log('Player wins!')
+        }
+    }
+
+    attachHandlers(){
+        var ourGame=this;
+        $('#hitMe').click(function(){
+            $('#playerHand').append(ourGame.createCardHTML(ourGame.player.takeCard(ourGame.deck.dealCard())));
+        })
+    }
+}
+
+
+var game = new Game("Tom");
+game.initialize();
+
+
+
+
+
+
+// var newDeck = new Deck();
+// console.log(newDeck);
+// newDeck.shuffleDeck();
+// newDeck.shuffleDeck();
+// console.log(newDeck);
+
+// var newPlayer = new Player("Tom");
+// newPlayer.takeCard(newDeck.dealCard());
+// newPlayer.takeCard(newDeck.dealCard());
+// console.log(newPlayer.hand);
+// console.log(newDeck.cards.length);
+

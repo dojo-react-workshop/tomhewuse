@@ -3,7 +3,7 @@
     margin: 0px;
     padding: 0px;
     font-stlyle: Georgia;
-    outline: solid red;
+    /*outline: solid red;*/
 }
 #container{
     width: 970px;
@@ -16,10 +16,8 @@
     display: block;
     background-color: cornflowerblue;
     margin-top: 100px;
-
 }
 
-/* NAV styles */
 #player{
     display: block;
     background-color: indianred;
