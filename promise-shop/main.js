@@ -1,9 +1,8 @@
 'use strict';
 
 var promise = new Promise(function(resolve, reject){
-    resolve('I FIRED');
-    reject(new Error('I DID NOT FIRE'));
-
+    resolve('PROMISE VALUE');
+    console.log('MAIN PROGRAM');
     // setTimeout(function(){
     //     reject(new Error('REJECTED!'));
     // },300);
@@ -13,7 +12,6 @@ function onReject(err){
     console.log(err.message);
 }
 
-
-promise.then((text)=>{console.log(text)}, (err)=>{onReject(err)});
+promise.then(console.log, (err)=>{onReject(err)});
 
 
