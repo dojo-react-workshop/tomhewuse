@@ -1,0 +1,45 @@
+/* OVERALL styles */
+*{
+    margin: 0px;
+    padding: 0px;
+    font-stlyle: Georgia;
+    outline: solid red;
+}
+#container{
+    width: 970px;
+    height:1000px;
+    margin: auto auto;
+}
+
+/* HEADER styles */
+#dealer{
+    display: block;
+    background-color: cornflowerblue;
+    margin-top: 100px;
+
+}
+
+/* NAV styles */
+#player{
+    display: block;
+    background-color: indianred;
+    margin-top:100px;
+
+}
+
+h3{
+    display: inline-block;
+    margin: 50px 20px;
+}
+.hand{
+    display:inline-block;
+    float:right;
+    margin: 20px 200px 20px 0px;
+}
+.card{
+    height:100px;
+    width: 30px;
+    margin: 0px 30px;
+    display:inline-block;
+
+}
