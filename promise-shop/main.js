@@ -1,17 +1,11 @@
 'use strict';
 
-var promise = new Promise(function(resolve, reject){
-    resolve('PROMISE VALUE');
-    console.log('MAIN PROGRAM');
-    // setTimeout(function(){
-    //     reject(new Error('REJECTED!'));
-    // },300);
-});
+// var promise = new Promise(function(resolve, reject){
+//     console.log('MAIN PROGRAM')
+// });
 
-function onReject(err){
-    console.log(err.message);
-}
+var promise = Promise.resolve("RESOLVED");
+promise.then(console.log);
 
-promise.then(console.log, (err)=>{onReject(err)});
-
-
+var promise = Promise.reject(new Error("ERROR!"));
+promise.catch(console.log);
