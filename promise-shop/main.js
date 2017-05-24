@@ -1,25 +1,29 @@
-'use strict';
 
-var Promise = require('es6-promise')
 
-function iterate (num) {
-    console.log(num);
-    return ++num;
+var getAll = function(prom1, prom2){
+    return new Promise((resolve,reject)=>{
+    var counter = 0;
+    var doneVals = []
+
+    prom1.then((val)=>{
+        doneVals.push(val);
+        counter++;
+
+        if (counter>=2) {
+            resolve(doneVals);
+        }
+    });
+
+    prom2.then((val)=>{
+        doneVals.push(val);
+        counter++});
+
+        if(counter>=2){
+            resolve(doneVals);
+        }
+    });
 };
 
-function alwaysThrows () {
-    throw new Error("OH NOES");
-};
-
-Promise.resolve(iterate(1))
-    .then(iterate)
-    .then(iterate)
-    .then(iterate)
-    .then(iterate)
-    .then(alwaysThrows)
-    .then(iterate)
-    .then(iterate)
-    .then(iterate)
-    .then(iterate)
-    .then(iterate)
-    .then(null, console.log);
+getAll(promiseOne(), promiseTwo()).then((values)=>{
+    console.log(values[0], values[1]);
+});
