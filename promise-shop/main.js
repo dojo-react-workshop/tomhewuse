@@ -1,11 +1,14 @@
 'use strict';
 
-// var promise = new Promise(function(resolve, reject){
-//     console.log('MAIN PROGRAM')
-// });
+function attachTitle(str){
+    return `DR. ${str}`;
+};
 
-var promise = Promise.resolve("RESOLVED");
-promise.then(console.log);
+var promise = Promise.resolve('MANHATTAN');
+promise
+    .then(attachTitle)
+    .then(console.log);
 
-var promise = Promise.reject(new Error("ERROR!"));
-promise.catch(console.log);
+
+
+
