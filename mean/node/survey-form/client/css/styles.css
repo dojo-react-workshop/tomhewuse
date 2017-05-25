@@ -1,0 +1,58 @@
+/* OVERALL styles */
+*{
+    margin: 0px;
+    padding: 0px;
+    font-stlyle: Georgia;
+    /*outline: solid red;*/
+
+}
+#container{
+    width: 970px;
+    height:1000px;
+    margin: auto auto;
+}
+
+
+/* HEADER styles */
+#header{
+    display: block;
+    background-color: cornflowerblue;
+    height: 100px;
+}
+
+
+#surveyForm{
+    display: inline-block;
+    margin: 100px 235px;
+    width: 500px;
+    background-color: #d5d5d5;
+    border: solid 2px black;
+
+}
+.input{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+input,select{
+    width: 150px;
+}
+
+#comments{
+    margin-left:50px;
+    margin-top:10px;
+}
+#commentBox{
+    display: block;
+    width:400px;
+    height: 150px;
+}
+
+#submit{
+    margin-top:10px;
+    float:right;
+    margin-right:50px;
+    margin-bottom:20px;
+    width: 70px;
+}

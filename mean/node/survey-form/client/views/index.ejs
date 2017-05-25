@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Survey Form</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Survey Form">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+<div id="container">
+
+    <form id="surveyForm" action="/result" method="post">
+        <div class="input">
+            <label for="name">Your Name:</label>
+            <input type="text" name="name">
+        </div>
+        <div class="input">
+            <label for="location">Dojo Location:</label>
+            <select name="location">
+                <option value="Milwaukee">Milwaukee</option>
+                <option value="Phoenix">Phoenix</option>
+                <option value="New York">New York</option>
+                <option value="Franklin">Franklin</option>
+            </select>
+        </div>
+        <div class="input">
+            <label for="language">Favorite Language: </label>
+            <select name="language">
+                <option value="Javascript">Javascript</option>
+                <option value="C++">C++</option>
+                <option value="Java">Java</option>
+                <option value="PL1">PL1</option>
+            </select>
+        </div>
+        <div id="comments">
+            <label for="comments">Comments</label>
+            <input id="commentBox" type="text" name="comments">
+        </div>
+        <input id="submit" type="submit" value="Submit">
+    </form>
+
+</div><!-- end of wrapper -->
+</body>
+</html>
