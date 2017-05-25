@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Namelist</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript">
+
+		function buildFromRes(servRes){	
+			let htmlDivStr = '';
+
+			for(let i=0; i<servRes.length; i++){
+				htmlDivStr += `<div><p>${servRes[i].name}</p>
+								<img class='nameInList' src='../images/trashIcon.png' alt='Delete'>
+								</div>`;
+			}
+
+			$('#userList').html(htmlDivStr);
+		}
+
+		$(document).ready(function(){
+
+		    $('#userList').on('click','img', function(){
+                let userName = {name:`${$(this).siblings('p').text()}`};
+		        $.ajax({
+                    url: '/removeName',
+                    method: 'POST',
+					data: userName,
+                    success: function(responseFromServer) {
+                        buildFromRes(responseFromServer);
+                    }
+                });
+
+			})
+
+		 	 $.ajax({
+				 url: '/api/userList',
+				 method: 'GET',
+				 success: function(responseFromServer){
+				 	console.log(responseFromServer);
+				 	buildFromRes(responseFromServer);
+				 }
+		 	 });
+
+			$('#userForm').submit(function(event){
+				event.preventDefault();
+
+			 	const userName = { name: $('#name').val() };
+
+			 	$.ajax({
+					url: '/postName',
+					method: 'POST',
+					data: userName,
+					success: function(responseFromServer){
+						buildFromRes(responseFromServer);
+					}
+			 	});
+
+				$('#name').val('');
+			});
+
+	});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+	<h2>Namelist</h2>
+	<div id='formDiv'>
+		<form id="userForm">
+			<div class="inFormLine">
+				<input type="text" name="name" id="name">
+			</div>
+			<div class="inFormLine">
+				<input type="submit" value="Add Name">
+			</div>
+		</form>
+	</div>
+	<div>
+		<div id="userList">
+
+		</div>
+	</div>
+
+	</div>	
+</body>
+</html>

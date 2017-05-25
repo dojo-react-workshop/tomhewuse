@@ -17,5 +17,5 @@ function max_price(arr=process.argv[2]) {
     return profit;
 }
 
-max_price([3,11,2,3,10,11,7]);
+max_price([2,11,2,3,4,12,4]);
 
