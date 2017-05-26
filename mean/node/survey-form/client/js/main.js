@@ -2,6 +2,7 @@
  * Created by Hew4803 on 5/25/17.
  */
 'use strict';
+const http = axios;
 function renderCard(data){
     let infoHtml = `<div id="surveyForm">
                         <div class="input">
@@ -68,17 +69,29 @@ $(document).ready(function() {
         event.preventDefault();
         //ajax call to send data
         let formData = $(this).serialize();
-        console.log(formData)
-        $.ajax({
+        console.log(formData);
+
+
+        var promise = http({
             url: '/result',
             method: 'POST',
-            data: formData,
-            success: function(data){
-                //success receives json back with data
-                console.log(data);
-                renderCard(data);
-            }
+            data: formData
         });
+        promise.then(function(response){
+            console.log(response);
+            renderCard(response);
+        });
+
+        // $.ajax({
+        //     url: '/result',
+        //     method: 'POST',
+        //     data: formData,
+        //     success: function(data){
+        //         //success receives json back with data
+        //         console.log(data);
+        //         renderCard(data);
+        //     }
+        // });
         //function builds card with data received
     })
 });
