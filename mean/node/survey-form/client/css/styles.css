@@ -49,7 +49,7 @@ input,select{
     height: 150px;
 }
 
-#submit{
+#submit, #goBack{
     margin-top:10px;
     float:right;
     margin-right:50px;
