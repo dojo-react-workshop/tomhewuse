@@ -5,12 +5,14 @@ module.exports=function routes(app){
     });
 
     app.post('/result',(req,res)=>{
+        console.log(req);
         if(req.body.name === ''){
             res.status(400);
             res.json(false);
+
+        }else {
+            res.json(req.body);
         }
-        console.log(req.body)
-        res.json(req.body);
     });
 
 };

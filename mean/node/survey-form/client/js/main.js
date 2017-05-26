@@ -71,15 +71,14 @@ $(document).ready(function() {
         let formData = $(this).serialize();
         console.log(formData);
 
-
         var promise = http({
             url: '/result',
-            method: 'POST',
+            method: 'post',
             data: formData
         });
         promise.then(function(response){
             console.log(response);
-            renderCard(response);
+            renderCard(response.data);
         });
 
         // $.ajax({
