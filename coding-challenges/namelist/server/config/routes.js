@@ -10,18 +10,18 @@ module.exports = function(app){
 
 	app.get('/', function(request, response){
 		response.render('index');
-	})
+	});
     app.get('/api/userList', function(request, response){
         response.json(users);
-    })
+    });
 
 	app.post('/postName', function(request, response){
 		users.push(request.body);
 		response.json(users);
-	})
+	});
 
 	app.post('/removeName', function(request, response){
-		let indexToRemove = users.findIndex((value,index,array)=>{
+		let indexToRemove = users.findIndex((value)=>{
 			if(value.name==request.body.name){
         		return true;
 			}
@@ -32,4 +32,4 @@ module.exports = function(app){
 
     })
 
-}
+};
