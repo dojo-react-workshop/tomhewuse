@@ -1,20 +1,34 @@
 $(document).ready(function(){
-    $('#userList').on('click','p', function(){
-        console.log(`this - ${this}`);
-        let parent = $(this).parent();
-        console.log(`parent: ${parent}`);
-        $(parent).html(`<input type=text value='${$(this).text()}'>
-                        <img src="../images/plus.png">`);
-        let inputField = $(parent).children('input');
-        $(inputField).select();
 
-    })
-    $('#userList').on('click','img', function(){
-        let userName = {name:`${$(this).siblings('p').text()}`};
+
+    $('#userList').on('click','p', function(){
+        let parentDiv = $(this).parent();
+        let name = $(this).text()
+        $(parentDiv).html(buildNameUpdate(name));
+        let inputTextBox = $(parentDiv).children('form').children('input');
+        $(inputTextBox).select();
+    });
+
+    $('#userList').on('click', 'img.update',function(){
+        let userObject = {key: $(this).parent().parent().attr('key')};
+        userObject.name = $('#updateText').val();
+
+        $.ajax({
+            url: '/updateName',
+            method: 'put',
+            data: userObject,
+            success: function(responseFromServer) {
+                buildNameList(responseFromServer);
+            }
+        });
+    });
+
+    $('#userList').on('click','img.delete', function(){
+        let userKey = {key:`${$(this).parent().attr('key')}`};
         $.ajax({
             url: '/removeName',
-            method: 'POST',
-            data: userName,
+            method: 'delete',
+            data: userKey,
             success: function(responseFromServer) {
                 buildNameList(responseFromServer);
             }
@@ -24,7 +38,7 @@ $(document).ready(function(){
 
     $.ajax({
         url: '/api/userList',
-        method: 'GET',
+        method: 'get',
         success: function(responseFromServer){
             console.log(responseFromServer);
             buildNameList(responseFromServer);
@@ -38,7 +52,7 @@ $(document).ready(function(){
 
         $.ajax({
             url: '/postName',
-            method: 'POST',
+            method: 'post',
             data: userName,
             success: function(responseFromServer){
                 buildNameList(responseFromServer);

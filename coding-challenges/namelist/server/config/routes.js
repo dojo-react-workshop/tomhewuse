@@ -1,10 +1,12 @@
 'use strict'
 
+
+
 module.exports = function(app){
 
 	let users = [
-	 	{name: 'AJ'},
-	 	{name: 'Tom'}
+	 	{name: 'AJ', key: 1},
+	 	{name: 'Tom', key: 2}
 	];
 
 
@@ -15,19 +17,30 @@ module.exports = function(app){
         response.json(users);
     });
 
+    app.put('/updateName', function(request, response){
+        let indexToUpdate = users.findIndex((value)=>{
+            if(value.key==request.body.key){
+                return true;
+            }
+        });
+        users[indexToUpdate].name=request.body.name;
+    	response.json(users);
+    });
+
 	app.post('/postName', function(request, response){
-		users.push(request.body);
+		let user=request.body;
+		user.key = Math.floor(Math.random()*1000000);
+		users.push(user);
 		response.json(users);
 	});
 
-	app.post('/removeName', function(request, response){
+	app.delete('/removeName', function(request, response){
 		let indexToRemove = users.findIndex((value)=>{
-			if(value.name==request.body.name){
-        		return true;
+			if(value.key==request.body.key){
+				return true;
 			}
 		});
 		users.splice(indexToRemove,1);
-		console.log(indexToRemove);
 		response.json(users);
 
     })
