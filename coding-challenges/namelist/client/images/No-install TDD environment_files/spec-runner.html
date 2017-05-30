@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://tddbin.com/mocha/spec-runner.html -->
+<html><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="./mocha.min.css">
+</head>
+<body>
+  <div id="mocha"><ul id="mocha-stats"><li class="progress"><canvas width="80" height="80"></canvas></li><li class="passes"><a href="javascript:void(0);">passes:</a> <em>0</em></li><li class="failures"><a href="javascript:void(0);">failures:</a> <em>5</em></li><li class="duration">duration: <em>0.01</em>s</li></ul><ul id="mocha-report"><li class="suite"><h1><a href="http://tddbin.com/mocha/spec-runner.html?grep=destructuring%20function%20parameters">destructuring function parameters</a></h1><ul><li class="suite"><h1><a href="http://tddbin.com/mocha/spec-runner.html?grep=destructuring%20function%20parameters%20destruct%20parameters">destruct parameters</a></h1><ul><li class="test fail"><h2>multiple params from object <a href="http://tddbin.com/mocha/spec-runner.html?grep=destructuring%20function%20parameters%20destruct%20parameters%20multiple%20params%20from%20object" class="replay">‣</a></h2><pre class="error">TypeError: Cannot read property 'id' of undefined
+    at fn (eval at runSpecs (spec-runner.js:95149:7), &lt;anonymous&gt;:13:22)
+    at n.eval (eval at runSpecs (spec-runner.js:95149:7), &lt;anonymous&gt;:22:7)
+    at r (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:8479)
+    at r.run (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:9550)
+    at i.runTest (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:14329)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:14969
+    at r (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13794)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13770
+    at n (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13561)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13625</pre><pre style="display: none;"><code>var fn = function fn(_ref, _ref2) {
+  var id = _ref.id;
+  var name = _ref2.name;
+  assert.equal(id, 42);
+  assert.equal(name, 'Wolfram');
+};
+var _name$id = { name: 'Wolfram', id: 42 };
+var user = _name$id.user;
+fn(user);</code></pre></li><li class="test fail"><h2>multiple params from array/object <a href="http://tddbin.com/mocha/spec-runner.html?grep=destructuring%20function%20parameters%20destruct%20parameters%20multiple%20params%20from%20array%2Fobject" class="replay">‣</a></h2><pre class="error">AssertionError: "nobody" == "Alice"
+    at fn (eval at runSpecs (spec-runner.js:95149:7), &lt;anonymous&gt;:31:16)
+    at n.eval (eval at runSpecs (spec-runner.js:95149:7), &lt;anonymous&gt;:34:7)
+    at r (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:8479)
+    at r.run (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:9550)
+    at i.runTest (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:14329)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:14969
+    at r (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13794)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13770
+    at n (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13561)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13625</pre><pre style="display: none;"><code>var fn = function fn(_ref3) {
+  var _ref32 = _slicedToArray(_ref3, 1);
+  var name = _ref32[0].name;
+  assert.equal(name, 'Alice');
+};
+var users = [{ name: 'nobody' }, { name: 'Alice', id: 42 }];
+fn(users);</code></pre></li></ul></li><li class="suite"><h1><a href="http://tddbin.com/mocha/spec-runner.html?grep=destructuring%20function%20parameters%20default%20values">default values</a></h1><ul><li class="test fail"><h2>for simple values <a href="http://tddbin.com/mocha/spec-runner.html?grep=destructuring%20function%20parameters%20default%20values%20for%20simple%20values" class="replay">‣</a></h2><pre class="error">AssertionError: "Bobby" === "Bob"
+    at fn (eval at runSpecs (spec-runner.js:95149:7), &lt;anonymous&gt;:44:16)
+    at n.eval (eval at runSpecs (spec-runner.js:95149:7), &lt;anonymous&gt;:46:7)
+    at r (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:8479)
+    at r.run (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:9550)
+    at i.runTest (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:14329)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:14969
+    at r (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13794)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13770
+    at n (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13561)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13625</pre><pre style="display: none;"><code>var fn = function fn(id) {
+  var name = arguments.length &lt;= 1 || arguments[1] === undefined ? 'Bobby' : arguments[1];
+  assert.strictEqual(id, 23);
+  assert.strictEqual(name, 'Bob');
+};
+fn(23);</code></pre></li><li class="test fail"><h2>for a missing array value <a href="http://tddbin.com/mocha/spec-runner.html?grep=destructuring%20function%20parameters%20default%20values%20for%20a%20missing%20array%20value" class="replay">‣</a></h2><pre class="error">AssertionError: "undefined" deepEqual {"id":23,"name":"Joe"}
+    at fn (eval at runSpecs (spec-runner.js:95149:7), &lt;anonymous&gt;:56:16)
+    at n.eval (eval at runSpecs (spec-runner.js:95149:7), &lt;anonymous&gt;:58:7)
+    at r (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:8479)
+    at r.run (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:9550)
+    at i.runTest (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:14329)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:14969
+    at r (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13794)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13770
+    at n (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13561)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13625</pre><pre style="display: none;"><code>var defaultUser = { id: 23, name: 'Joe' };
+var fn = function fn(_ref4) {
+  var _ref42 = _slicedToArray(_ref4, 1);
+  var user = _ref42[0];
+  assert.deepEqual(user, defaultUser);
+};
+fn([]);</code></pre></li><li class="test fail"><h2>mix of parameter types <a href="http://tddbin.com/mocha/spec-runner.html?grep=destructuring%20function%20parameters%20default%20values%20mix%20of%20parameter%20types" class="replay">‣</a></h2><pre class="error">AssertionError: "undefined" == 1
+    at fn (eval at runSpecs (spec-runner.js:95149:7), &lt;anonymous&gt;:68:16)
+    at n.eval (eval at runSpecs (spec-runner.js:95149:7), &lt;anonymous&gt;:72:7)
+    at r (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:8479)
+    at r.run (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:9550)
+    at i.runTest (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:14329)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:14969
+    at r (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13794)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13770
+    at n (http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13561)
+    at http://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js:2:13625</pre><pre style="display: none;"><code>var fn = function fn(id, _ref5, _ref6) {
+  var _ref52 = _slicedToArray(_ref5, 1);
+  var arr = _ref52[0];
+  var obj = _ref6.obj;
+  assert.equal(id, 1);
+  assert.equal(arr, 2);
+  assert.equal(obj, 3);
+};
+fn(void 0, [], {});</code></pre></li></ul></li></ul></li></ul></div>
+  <pre id="errorOutput"></pre>
+  <script src="./mocha.min.js" type="application/javascript"></script>
+  <script src="./spec-runner.js" type="application/javascript"></script>
+
+
+</body></html>
