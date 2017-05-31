@@ -24,7 +24,34 @@
         {
             margin: 'auto',
             width: 475
-        }
+        };
+    const tileStyle = {
+        display: 'block',
+        fontSize: 20,
+        color: 'black',
+        border: 'solid 2px black'
+    };
+    const languageStyle= {
+        verticalAlign: 'top',
+        width: 300,
+        lineHeight: 2,
+        display: 'inline-block'};
+    const votesStyle={
+        verticalAlign: 'top',
+        borderRadius: '50%',
+        border:'solid 2px black',
+        lineHeight: 2.5,
+        margin: 10,
+        textAlign:'center',
+        width: 50,
+        display: 'inline-block'};
+    const imgStyle={
+        verticalAlign: 'top',
+        width: 75,
+        display: 'inline-block'};
+    const tileContentStyles=[{
+        justifyContent: 'space-around',
+    }];
     const tiles = [
         {
             language: 'React',
@@ -44,10 +71,6 @@
         }
     ];
 
-    const tileContentStyles=[{
-        justifyContent: 'space-around',
-    }];
-
     const Container = (props) =>{
         const {style}=props;
         const tiles = props.tiles.map((tileObj, idx)=>{
@@ -61,30 +84,6 @@
     };
 
     const Tile = (props) =>{
-        const tileStyle = {
-            display: 'block',
-            fontSize: 20,
-            color: 'black',
-            border: 'solid 2px black'
-        };
-        const languageStyle= {
-            verticalAlign: 'top',
-            width: 300,
-            lineHeight: 2,
-            display: 'inline-block'};
-        const votesStyle={
-            verticalAlign: 'top',
-            borderRadius: '50%',
-            border:'solid 2px black',
-            lineHeight: 2.5,
-            margin: 10,
-            textAlign:'center',
-            width: 50,
-            display: 'inline-block'};
-        const imgStyle={
-            verticalAlign: 'top',
-            width: 75,
-            display: 'inline-block'};
         const {language} = props;
         const {votes}=props;
         return <div className='tile' style={tileStyle}>
