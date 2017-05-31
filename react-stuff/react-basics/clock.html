@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        const container = document.getElementById('app');
+        function refreshClock(){
+            let curTime= new Date().toLocaleTimeString();
+            var h1 = React.createElement('h1', null, `The time is: ${curTime}`)
+            ReactDOM.render(h1,container);
+        }
+        refreshClock();
+        setInterval(refreshClock,1000)
+    </script>
+</body>
+</html>

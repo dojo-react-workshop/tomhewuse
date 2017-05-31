@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    <style media="screen">
+        .demo {
+            border: 1px solid #ccc;
+            margin: 1em;
+            padding: 1em;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+    'use strict';
+    const appContainer = document.getElementById('app');
+    const squares = [
+        {
+            background: 'blue',
+            text: 'white'
+        },
+        {   background: 'aquamarine',
+            text: 'yellow'
+        },
+        {
+            background: 'purple',
+            text: 'lightblue'
+        }
+    ];
+
+    const Container = (props) =>{
+        console.log(props);
+        const squares = props.squares.map((squareObj, idx)=>{
+            return <Square key={idx} colorData={squareObj}/>;
+        });
+
+        for(let i=0;i<3;i++){
+            squares.push(React.createElement(Square, {key:i}))
+        }
+        return (
+                <div>
+                    {squares}
+                </div>
+        );
+    };
+
+    const Square = (props) =>{
+        const {colorData} = props;
+        const style = {
+            height: 200,
+            width: 200,
+            display: 'inline-block',
+            fontSize: 40,
+            color: colorData.text,
+            backgroundColor: colorData.background
+        };
+
+        const text = `${style.color} on ${style.backgroundColor}`;
+
+        return <div style={style}>{text}</div>;
+    };
+
+    ReactDOM.render(
+            <Container squares={squares}/>,
+        appContainer);
+
+
+</script>
+</body>
+</html>
+</html>

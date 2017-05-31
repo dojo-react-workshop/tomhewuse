@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Library Vote</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    <style media="screen">
+        .demo {
+            border: 1px solid #ccc;
+            margin: 1em;
+            padding: 1em;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center">Vote Your JS Library!</h1>
+<div id="app"></div>
+<script type="text/babel">
+    'use strict';
+    const appContainer = document.getElementById('app');
+    const containerStyle =
+        {
+            margin: 'auto',
+            width: 475
+        };
+    const tileStyle = {
+        display: 'block',
+        fontSize: 20,
+        color: 'black',
+        border: 'solid 2px black'
+    };
+    const languageStyle= {
+        verticalAlign: 'top',
+        width: 300,
+        lineHeight: 2,
+        display: 'inline-block'};
+    const votesStyle={
+        verticalAlign: 'top',
+        borderRadius: '50%',
+        border:'solid 2px black',
+        lineHeight: 2.5,
+        margin: 10,
+        textAlign:'center',
+        width: 50,
+        display: 'inline-block'};
+    const imgStyle={
+        verticalAlign: 'top',
+        width: 75,
+        display: 'inline-block'};
+
+    const tiles = [
+        {
+            language: 'React',
+            votes: 15,
+        },
+        {
+            language: 'Vue',
+            votes: 12,
+        },
+        {
+            language: 'Angular',
+            votes: 9,
+        },
+        {
+            language: 'Ember',
+            votes: 4
+        }
+    ];
+
+    const Container = (props) =>{
+        const {style}=props;
+        const tiles = props.tiles.map((tileObj, idx)=>{
+            return <Tile key={idx} language={tileObj.language} votes={tileObj.votes}/>;
+        });
+         return (
+            <div style={style}>
+                {tiles}
+            </div>
+        );
+    };
+
+    const Tile = (props) =>{
+        const handleClick = () => {
+            alert('you clicked me');
+        };
+        const {language} = props;
+        const {votes}=props;
+        return <div className='tile' style={tileStyle}>
+                    <p style={votesStyle}>{votes}</p>
+                    <p style={languageStyle}>{language}</p>
+                    <img src='./img/plus.png' style={imgStyle} onClick={handleClick}/>
+               </div>;
+        };
+
+    ReactDOM.render(
+        <Container tiles={tiles} style={containerStyle}/>,
+        appContainer);
+
+</script>
+</body>
+</html>
+</html>
