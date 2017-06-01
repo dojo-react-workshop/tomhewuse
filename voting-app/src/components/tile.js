@@ -29,35 +29,27 @@ const imgStyle={
     width: 75,
     display: 'inline-block'};
 
+
 class Tile extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = {
-            votes: 0
-        }
     }
 
     handleClick=()=>{
-        this.setState({
-            votes: this.state.votes+1
-        })
-    }
+        this.props.updateTile(this);
+    };
 
     render(){
-        const {language, votes} = this.props;
-
         return (
-            <div className='tile' style={tileStyle}>
-                <p style={votesStyle}>{this.state.votes}</p>
-                <p style={languageStyle}>{language}</p>
+            <div id={this.props.id} className='tile' style={tileStyle}>
+                <p style={votesStyle}>{this.props.votes}</p>
+                <p style={languageStyle}>{this.props.language}</p>
                 <img src={imgPath} alt="plus" style={imgStyle} onClick={this.handleClick}/>
-
             </div>
         )
     }
-
-
 }
+
 
 export default Tile;

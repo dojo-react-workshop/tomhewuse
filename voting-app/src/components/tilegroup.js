@@ -14,7 +14,6 @@ class TileGroup extends React.Component {
             };
     }
 
-
     render() {
         const containerStyle =
             {
@@ -23,7 +22,7 @@ class TileGroup extends React.Component {
             };
 
         const tiles = this.props.tiles.map((tileObj, idx) => {
-            return <Tile key={idx} language={tileObj.language} votes={tileObj.votes}/>;
+            return <Tile key={tileObj.id} language={tileObj.language} votes={tileObj.votes} updateTile={this.props.updateTile} />;
         });
 
         return (
