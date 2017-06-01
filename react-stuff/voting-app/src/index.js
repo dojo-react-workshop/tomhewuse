@@ -41,8 +41,7 @@ class App extends React.Component{
             }
             return element;
         });
-        console.log(newTiles);
-        console.log(this.state.tiles);
+
         newTiles.sort(function(a, b){return b.votes - a.votes});
         this.setState({tiles: newTiles});
     };
