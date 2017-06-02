@@ -61,11 +61,18 @@ class App extends Component {
 
     };
 
+    handleKeyPress=(event)=>{
+        console.log(event.key)
+        if (event.key ==="Enter"){
+            this.addTodo(event.target.value);
+        }
+    }
+
     render() {
         return (
           <div className="App">
               <h1>todos</h1>
-              <input className="newTodo" type="text"  placeholder="What do you need to do?"/>
+              <input className="newTodo" type="text" onKeyPress={this.handleKeyPress} placeholder="What do you need to do?"/>
               <TodoList todos={this.state.todos} updateTodoStatus={this.updateTodoStatus} deleteTodo={this.deleteTodo}/>
               <ListStatus/>
           </div>
