@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import deleteImg from './img/x.png';
+import TodoList from './components/TodoList'
+import TodoStatus from './components/TodoStatus'
+
 
 class App extends Component {
 
@@ -37,8 +40,18 @@ class App extends Component {
 
     }
 
+    updateTodoDesc=(todoID, todoDesc)=>{
+        let newTodos = this.state.todos.map((value)=>{
+            if(value.id===todoID){
+                value.desc = todoDesc;
+            }
+            return value;
+        });
+        this.setState({todos:newTodos});
+
+    };
+
     deleteTodo=(todoID)=>{
-        console.log(todoID);
         let newTodos = this.state.todos.filter((value)=>{
             if(value.id!==todoID){
                 return value;
@@ -50,9 +63,7 @@ class App extends Component {
     updateTodoStatus=(todoID,status)=>{
 
         let newTodos = this.state.todos.map((value)=>{
-            console.log(value);
-            if(value.id==todoID){
-                console.log(value.status);
+            if(value.id===todoID){
                 value.isDone = status;
             }
             return value;
@@ -62,7 +73,6 @@ class App extends Component {
     };
 
     handleKeyPress=(event)=>{
-        console.log(event.key)
         if (event.key ==="Enter"){
             this.addTodo(event.target.value);
         }
@@ -73,72 +83,11 @@ class App extends Component {
           <div className="App">
               <h1>todos</h1>
               <input className="newTodo" type="text" onKeyPress={this.handleKeyPress} placeholder="What do you need to do?"/>
-              <TodoList todos={this.state.todos} updateTodoStatus={this.updateTodoStatus} deleteTodo={this.deleteTodo}/>
-              <ListStatus/>
+              <TodoList todos={this.state.todos} updateTodoStatus={this.updateTodoStatus} deleteTodo={this.deleteTodo} updateTodoDesc={this.updateTodoDesc}/>
+              <TodoStatus/>
           </div>
         );
   }
-}
-
-const NewTodo = (props) => {
-    return(
-        <div id='newTodo' >
-
-        </div>
-    )
-};
-
-const TodoList = (props) => {
-
-    const listItems = props.todos.map((item)=>{
-        return (
-            <TodoItem
-                key={item.id}
-                id={item.id}
-                desc={item.desc}
-                isDone={item.isDone}
-                updateTodoStatus={props.updateTodoStatus}
-                deleteTodo={props.deleteTodo}
-
-            />)
-    });
-    return(
-        <div id='todoList'>
-            {listItems}
-        </div>
-    )
-};
-
-const TodoItem = (props) =>{
-    let input;
-    const handleStatusChange=()=>{
-        props.updateTodoStatus(props.id,!props.isDone);
-    };
-
-    const handleDeleteClick=()=>{
-        props.deleteTodo(props.id);
-    }
-
-
-    return(
-        <div className='listItem'>
-            <input type="checkbox" onChange={handleStatusChange} checked={props.isDone}/>
-            <p>{props.desc}</p>
-            <img className="deleteImg" onClick={handleDeleteClick} src={deleteImg} />
-        </div>
-    )
-};
-
-const ListStatus = (props) =>{
-    return(
-        <div id="listStatus">
-            <p>items left</p>
-            <button value="true">All</button>
-            <button>Active</button>
-            <button>Completed</button>
-            <p>Items Completed</p>
-        </div>
-    )
 }
 
 export default App;

@@ -5,20 +5,20 @@ body {
 }
 
 .newTodo{
-  width: 300px;
+  width: 400px;
   font-size: 18px;
 }
 
-#listStatus p, #listStatus button{
+#todoStatus p, #listStatus button{
   display: inline-block;
   font-size: 12px;
 }
 
-#listStatus p{
+#todoStatus p{
   margin: 10px;
 }
 
-#listStatus button{
+#todoStatus button{
   border-radius: 0%;
   background-color: white;
 }
@@ -38,30 +38,38 @@ body {
   border-style: none;
   background-color: transparent;
 }
+.listItem input[type='text']{
+  font-size: 18px;
+  width: 80%;
 
+}
 .listItem{
-  width:298px;
+  width:398px;
   text-align: left;
   border: solid 1px lightgray;
 }
 .listItem p{
   width:240px;
   text-align: left;
+  font-size: 18px;
+
 }
 .listItem:hover > .deleteImg{
   display: inline-block;
 }
+
 .deleteImg{
   display:none;
   height:15px;
-  vertical-align: middle;
+  vertical-align: bottom;
+  float:right;
 }
 
 #todoList{
-  width:300px;
-  margin:auto auto;
-  text-align: center;
-  padding:0;
+  width: 400px;
+  padding: 0;
+  margin:0 auto;
+  display:block;
 }
 
 
