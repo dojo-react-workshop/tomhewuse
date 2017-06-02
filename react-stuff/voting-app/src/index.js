@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
+import './main.css'
 import TileGroup from './components/tilegroup'
 
 class App extends React.Component{
@@ -32,20 +33,6 @@ class App extends React.Component{
             ]
         }
     }
-
-    updateTile=(tileObj)=> {
-        console.log(tileObj);
-        let newTiles = Array.from(this.state.tiles,(element,index,array)=>{
-            if(element.language===tileObj.props.language){
-                element.votes++;
-            }
-            return element;
-        });
-
-        newTiles.sort(function(a, b){return b.votes - a.votes});
-        this.setState({tiles: newTiles});
-    };
-
 
     render(){
         return (
