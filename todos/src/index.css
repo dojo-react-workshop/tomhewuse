@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.newTodo{
+  width: 300px;
+  font-size: 18px;
+}
+
+#listStatus p, #listStatus button{
+  display: inline-block;
+  font-size: 12px;
+}
+
+#listStatus p{
+  margin: 10px;
+}
+
+#listStatus button{
+  border-radius: 0%;
+  background-color: white;
+}
+
+#listStatus button[value="true"]{
+  background-color: lightgray;
+}
+
+.listItem *{
+  display: inline-block;
+  margin: 5px;
+  vertical-align: middle;
+  line-height: 100%;
+}
+
+.listItem button{
+  border-style: none;
+  background-color: transparent;
+}
+
+.listItem{
+  width:298px;
+  text-align: left;
+  border: solid 1px lightgray;
+}
+.listItem p{
+  width:240px;
+  text-align: left;
+}
+.listItem:hover > .deleteImg{
+  display: inline-block;
+}
+.deleteImg{
+  display:none;
+  height:15px;
+  vertical-align: middle;
+}
+
+#todoList{
+  width:300px;
+  margin:auto auto;
+  text-align: center;
+  padding:0;
+}
+
+
+
