@@ -1,76 +1,27 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
 
-.newTodo{
-  width: 400px;
-  font-size: 18px;
-}
-
-#todoStatus p, #listStatus button{
-  display: inline-block;
-  font-size: 12px;
-}
-
-#todoStatus p{
-  margin: 10px;
-}
-
-#todoStatus button{
-  border-radius: 0%;
-  background-color: white;
-}
-
-#listStatus button[value="true"]{
-  background-color: lightgray;
-}
-
-.listItem *{
-  display: inline-block;
-  margin: 5px;
+.listItem p, .listItem input, listItem img{
   vertical-align: middle;
-  line-height: 100%;
+  line-height: 0.5;
 }
 
-.listItem button{
-  border-style: none;
-  background-color: transparent;
-}
-.listItem input[type='text']{
-  font-size: 18px;
-  width: 80%;
-
-}
 .listItem{
-  width:398px;
   text-align: left;
-  border: solid 1px lightgray;
 }
 .listItem p{
-  width:240px;
   text-align: left;
-  font-size: 18px;
-
 }
 .listItem:hover > .deleteImg{
-  display: inline-block;
+  display: inherit;
 }
 
 .deleteImg{
   display:none;
-  height:15px;
-  vertical-align: bottom;
-  float:right;
 }
 
-#todoList{
-  width: 400px;
-  padding: 0;
-  margin:0 auto;
-  display:block;
+#todoStatus{
+  margin-top:10px;
 }
-
-
-

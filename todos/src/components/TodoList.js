@@ -3,7 +3,17 @@ import TodoItem from './TodoItem'
 
 const TodoList = (props) => {
 
-    const listItems = props.todos.map((item)=>{
+    let filteredTodos = props.todos.filter((value) => {
+        if(props.filter === 'all'){
+            return true;
+        }else if ((value.isDone === true && (props.filter == 'completed')) || (value.isDone === false && (props.filter === 'active'))){
+            return true;
+        } else {
+            return false
+        }
+    });
+
+    const listItems = filteredTodos.map((item)=>{
         return (
             <TodoItem
                 key={item.id}

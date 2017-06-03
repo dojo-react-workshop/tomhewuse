@@ -24,7 +24,9 @@ class App extends Component {
                 desc: "Test Todo",
                 isDone: false
             }
-        ]
+        ],
+        //options are "all", "active", "completed"
+        filter:"all"
     };
 
     addTodo=(text)=>{
@@ -76,15 +78,30 @@ class App extends Component {
         if (event.key ==="Enter"){
             this.addTodo(event.target.value);
         }
-    }
+    };
 
-    render() {
+    updateFilter=(filter)=>{
+        this.setState({filter:filter});
+    };
+
+
+    render(){
         return (
           <div className="App">
               <h1>todos</h1>
               <input className="newTodo" type="text" onKeyPress={this.handleKeyPress} placeholder="What do you need to do?"/>
-              <TodoList todos={this.state.todos} updateTodoStatus={this.updateTodoStatus} deleteTodo={this.deleteTodo} updateTodoDesc={this.updateTodoDesc}/>
-              <TodoStatus/>
+              <TodoList
+                  todos={this.state.todos}
+                  filter={this.state.filter}
+                  updateTodoStatus={this.updateTodoStatus}
+                  deleteTodo={this.deleteTodo}
+                  updateTodoDesc={this.updateTodoDesc}
+              />
+              <TodoStatus
+                  todos={this.state.todos}
+                  filter={this.state.filter}
+                  updateFilter={this.updateFilter}
+              />
           </div>
         );
   }
