@@ -1,14 +1,11 @@
-'use strict';
-import React, { Component } from 'react';
+import React from 'react';
 
-class Tile extends Component{
+const Tile =(props)=>{
 
-    render(){
-        return(
-            <div className="tile card small-6 col"></div>
-        )
-    }
+    return(
+        <button className="button secondary tile card small-6 col" id={props.id} ></button>
+    )
 
-}
+};
 
 export default Tile;

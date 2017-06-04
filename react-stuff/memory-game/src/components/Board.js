@@ -1,33 +1,20 @@
-'use strict';
-import React, { Component } from 'react';
+import React from 'react';
 import Tile from './Tile';
 
-class Board extends Component{
-
-    render(){
+const Board=(props)=>{
+    console.log(props.tiles);
+    const tileGroup = props.tiles.map((value)=>{
         return (
-            <div id="Board">
-                <div className="row">
-                    <Tile>X</Tile>
-                    <Tile>X</Tile>
-                    <Tile>X</Tile>
-                    <Tile>X</Tile>
-                </div>
-                <div className="row">
-                    <Tile>X</Tile>
-                    <Tile>X</Tile>
-                    <Tile>X</Tile>
-                    <Tile>X</Tile>
-                </div>
-                <div className="row">
-                    <Tile>X</Tile>
-                    <Tile>X</Tile>
-                    <Tile>X</Tile>
-                    <Tile>X</Tile>
-                </div>
-            </div>
+            <Tile key={value} id={value}/>
         )
-    }
-}
+    });
+    console.log(tileGroup);
+
+    return(
+        <div id="board">
+            {tileGroup}
+        </div>
+    );
+};
 
 export default Board;
