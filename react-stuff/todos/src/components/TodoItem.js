@@ -43,7 +43,7 @@ class TodoItem extends Component{
         if(this.state.editable){
             todoElement=(
                 <input
-                    className="small-18 col heading-moderate"
+                    className="small-18 medium-20 col heading-moderate"
                     autoFocus="true"
                     type="text"
                     onBlur={this.toggleEdit}
@@ -54,7 +54,7 @@ class TodoItem extends Component{
         }else{
             todoElement=(
                 <p
-                    className="small-18 col heading-moderate"
+                    className="small-18 medium-20 col heading-moderate"
                     onDoubleClick={this.toggleEdit}>
                     {this.props.desc}
                 </p>);
@@ -71,7 +71,7 @@ class TodoItem extends Component{
                 {todoElement}
 
                 <p
-                    className="deleteImg icon icon-remove col small-2 medium-2 large-2"
+                    className="deleteImg icon icon-remove col small-1 medium-1 large-1"
                     onClick={this.handleDeleteClick}
                     src={deleteImg}
                     alt="X"/>
