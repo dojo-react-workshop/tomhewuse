@@ -5,6 +5,7 @@ const array = [1,2,3,4];
 Array.prototype.reduce = function(callback,startVal){
     var accum = this[0];
     var start = 1;
+    //starts at accumulation value of start val and then the very beginning of array
     if(startVal !== undefined){
         accum=startVal;
         start=0;

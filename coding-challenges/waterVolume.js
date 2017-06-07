@@ -10,7 +10,7 @@ function findMaxIndex(arr){
             maxIndex=index;
             maxVal=value;
         }
-    })
+    });
     return maxIndex;
 }
 
