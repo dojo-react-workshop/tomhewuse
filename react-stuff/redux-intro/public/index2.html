@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://uitk.learnvest.com/v/1.16.0/css/nm/fonts.css" />
+    <link rel="stylesheet" href="https://uitk.learnvest.com/v/1.16.0/css/nm/icons.css" />
+    <link rel="stylesheet" href="https://uitk.learnvest.com/v/1.16.0/css/nm/main.css" />
+    <script>
+        // store should have the following interface/functionality:
+        // getState
+        // subscribe
+        // dispatch actions
+        function createStore(reducer){
+            const listeners = [];
+            let state  = {};
+
+            return {
+                getState: function (key){
+                    return state[key]
+                },
+                subscribe: function (callback){
+                    listeners.push(callback);
+                },
+                dispatch: function (action){
+                    console.log(action);
+                    state = reducer(state,action)
+                    listeners.forEach((cb)=>{
+                        cb();
+                    })
+                },
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+<div class="row">
+    <div class="columns large-6 large-centered medium-6 medium-centered small-6 small-centered">
+        <h2 style="text-align: center">Counter: <span id="counter">0</span></h2>
+        <button id="increment">Increment</button>
+        <button id="decrement">Decrement</button>
+    </div>
+</div>
+
+</body>
+<script type="application/javascript">
+    //createStore(reducer) => { getState, subscribe, dispatch }
+    function render(){
+        document.getElementById('counter').innerHTML = store.getState('count');
+    }
+
+    const decButton=document.getElementById('decrement');
+    decButton.onclick = function handleDecrement(){
+        store.dispatch({type:'DEC'})
+    }
+
+    const incButton=document.getElementById('increment');
+    incButton.onclick = function handleIncrement(){
+        store.dispatch({type:'INC'})
+    };
+
+    function reducer(oldState,action){
+        console.log('old');
+        console.log(oldState)
+        const newState = Object.assign({},oldState)
+        console.log(newState)
+        switch (action.type){
+            case 'INC':
+                newState.count=oldState+1;
+                break;
+            case 'DEC':
+                newState.count=oldState-1;
+                break;
+            default:
+                newState.count = 0;
+        }
+        console.log(newState.count)
+        return newState;
+    }
+    const store = createStore(reducer);
+    store.subscribe(render);
+    store.dispatch({ type:'INIT'});
+
+    render();
+
+
+
+</script>
+
+</html>

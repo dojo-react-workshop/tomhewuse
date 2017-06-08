@@ -5,7 +5,8 @@ class RepoSearch extends Component{
         super(props);
 
         this.state={
-            searchText:''
+            searchText:'',
+            error: ''
         }
     }
 
@@ -20,9 +21,9 @@ class RepoSearch extends Component{
         event.preventDefault();
 
         this.props.updateUsers(this.state.searchText)
-            .then(() => {
+            .then((data) => {
+                console.log
                 this.setState({ searchText: '', error: null })
-
             })
             .catch(() => {
                 this.setState({
