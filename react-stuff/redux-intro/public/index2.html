@@ -70,10 +70,10 @@
         console.log(newState)
         switch (action.type){
             case 'INC':
-                newState.count=oldState+1;
+                newState.count=oldState.count + 1;
                 break;
             case 'DEC':
-                newState.count=oldState-1;
+                newState.count=oldState.count - 1;
                 break;
             default:
                 newState.count = 0;
